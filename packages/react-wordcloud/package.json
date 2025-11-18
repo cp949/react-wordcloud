@@ -102,6 +102,10 @@
   ],
   "author": "Chris Zhou <chrisrzhou@pm.me> (https://github.com/chrisrzhou)",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
