@@ -1,0 +1,223 @@
+import { EnterElement, Selection as d3Selection } from 'd3-selection';
+import { Props as TippyProps } from 'tippy.js';
+
+/**
+ * Utility Types
+ */
+
+/**
+ * Make all properties in T optional
+ */
+export type Optional<T> = {
+  [P in keyof T]?: T[P];
+};
+
+/**
+ * Min-max value pair [min, max]
+ */
+export type MinMaxPair = [number, number];
+
+/**
+ * D3 scale type for word sizing
+ */
+export type Scale = 'linear' | 'log' | 'sqrt';
+
+/**
+ * Spiral layout pattern type
+ */
+export type Spiral = 'archimedean' | 'rectangular';
+
+/**
+ * Attribute value can be a string or a callback function
+ */
+export type AttributeValue = string | WordToStringCallback;
+
+/**
+ * D3 selection types for internal use
+ */
+export type Selection = d3Selection<SVGElement, Word, SVGElement, Word>;
+export type Enter = d3Selection<EnterElement, Word, SVGElement, Word>;
+
+/**
+ * Callback Types
+ */
+
+/**
+ * Callback that returns a string based on word object
+ */
+export type WordToStringCallback = (word: Word) => string;
+
+/**
+ * Callback for word events (click, mouseover, mouseout)
+ */
+export type WordEventCallback = (word: Word, event?: MouseEvent) => void;
+
+/**
+ * Core Interfaces
+ */
+
+/**
+ * Word object interface
+ * Must contain text and value, can have additional custom properties
+ */
+export interface Word {
+  /** The text content of the word */
+  text: string;
+  /** The numeric value/weight of the word */
+  value: number;
+  /** Allow additional custom properties */
+  [key: string]: unknown;
+}
+
+/**
+ * Callback functions for word interactions and customization
+ */
+export interface Callbacks {
+  /**
+   * Set the word color using the word object.
+   */
+  getWordColor?: WordToStringCallback;
+  /**
+   * Set the word tooltip using the word object.
+   */
+  getWordTooltip?: WordToStringCallback;
+  /**
+   * Capture the word and mouse event on click.
+   */
+  onWordClick?: WordEventCallback;
+  /**
+   * Capture the word and mouse event on mouse-out.
+   */
+  onWordMouseOut?: WordEventCallback;
+  /**
+   * Capture the word and mouse event on mouse over.
+   */
+  onWordMouseOver?: WordEventCallback;
+}
+
+/**
+ * Optional callbacks prop type
+ */
+export type CallbacksProp = Optional<Callbacks>;
+
+/**
+ * Configuration options for wordcloud appearance and behavior
+ */
+export interface Options {
+  /**
+   * Allows the wordcloud to randomly apply colors in the provided values.
+   */
+  colors: string[];
+  /**
+   * By default, words are randomly positioned and rotated.
+   * If true, the wordcloud will produce the same rendering output for any input.
+   */
+  deterministic: boolean;
+  /**
+   * (BETA) This feature is not formally supported. For more details, refer to the docs.
+   * Enables optimizations for rendering larger wordclouds.
+   * Note that this uses a custom cloud layout that batches the data into smaller subsets.
+   */
+  enableOptimizations: boolean;
+  /**
+   * Enables/disables the tooltip feature.
+   */
+  enableTooltip: boolean;
+  /**
+   * Customize the font family.
+   */
+  fontFamily: string;
+  /**
+   * Specify the minimum and maximum font size as a tuple.
+   * Tweak these numbers to control the best visual appearance for the wordcloud.
+   */
+  fontSizes: MinMaxPair;
+  /**
+   * Accepts CSS values for font-styles (e.g. italic, oblique)
+   */
+  fontStyle: string;
+  /**
+   * Accepts CSS values for font-weights (e.g. bold, 400, 700)
+   */
+  fontWeight: string;
+  /**
+   * Controls the padding between words
+   */
+  padding: number;
+  /**
+   * Set an optional random seed when `deterministic` option is set to `true`.
+   */
+  randomSeed?: string;
+  /**
+   * Provide the minimum and maximum angles that words can be rotated.
+   */
+  rotationAngles: MinMaxPair;
+  /**
+   * By default, the wordcloud will apply random rotations if this is not specified.
+   * When provided, it will use evenly-divided angles from the provided min/max rotation angles.
+   */
+  rotations?: number;
+  /**
+   * Control how words are spaced and laid out.
+   */
+  scale: Scale;
+  /**
+   * Control the spiral pattern on how words are laid out.
+   */
+  spiral: Spiral;
+  /**
+   * Customizable attributes to set on the rendered svg node
+   */
+  svgAttributes: Record<string, AttributeValue>;
+  /**
+   * Customizable attributes to set on the rendered text nodes
+   */
+  textAttributes: Record<string, AttributeValue>;
+  /**
+   * Additional props object to pass to the tooltip library. For more details,
+   * refer to the documentation for
+   * [Tippy.js Props](https://atomiks.github.io/tippyjs/v6/all-props/).
+   */
+  tooltipOptions: Optional<TippyProps>;
+  /**
+   * Sets the animation transition time in milliseconds.
+   */
+  transitionDuration: number;
+}
+
+/**
+ * Optional options prop type
+ */
+export type OptionsProp = Optional<Options>;
+
+/**
+ * React component props interface
+ */
+export interface Props {
+  /**
+   * Callbacks to control various word properties and behaviors.
+   */
+  callbacks?: CallbacksProp;
+  /**
+   * Maximum number of words to display.
+   */
+  maxWords?: number;
+  /**
+   * Set minimum [width, height] values for the SVG container.
+   */
+  minSize?: MinMaxPair;
+  /**
+   * Configure the wordcloud with various options.
+   */
+  options?: OptionsProp;
+  /**
+   * Set explicit [width, height] values for the SVG container.
+   * This will disable responsive resizing.
+   * If undefined, the wordcloud will responsively size to its parent container.
+   */
+  size?: MinMaxPair;
+  /**
+   * An array of words. A word is an object that must contain the 'text' and 'value' keys.
+   */
+  words: Word[];
+}
