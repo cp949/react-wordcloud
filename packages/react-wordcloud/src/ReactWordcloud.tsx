@@ -35,11 +35,17 @@ export function ReactWordcloud({
     [options]
   );
 
+  // Memoize svgAttributes separately to prevent unnecessary re-renders
+  const svgAttributes = useMemo(
+    () => mergedOptions.svgAttributes,
+    [mergedOptions.svgAttributes]
+  );
+
   // Get responsive SVG selection and size
   const [ref, selection, calculatedSize] = useResponsiveSvgSelection(
     minSize,
     size,
-    mergedOptions.svgAttributes
+    svgAttributes
   );
 
   // Debounced layout function to prevent excessive re-renders

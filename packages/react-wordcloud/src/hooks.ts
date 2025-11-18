@@ -80,7 +80,7 @@ export function useResponsiveSvgSelection(
     updateSize(width, height);
 
     // Set up ResizeObserver for responsive sizing
-    const resizeObserver = new ResizeObserver((entries) => {
+    const resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
       if (!entries || entries.length === 0) {
         return;
       }
@@ -101,7 +101,8 @@ export function useResponsiveSvgSelection(
       resizeObserver.unobserve(element);
       select(element).selectAll('*').remove();
     };
-  }, [initialSize, minSize, svgAttributes]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return [elementRef, selection, size];
 }
