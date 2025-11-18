@@ -4,7 +4,7 @@
  */
 
 import { render } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { useResponsiveSvgSelection } from '../hooks.js';
 import type { MinMaxPair } from '../types.js';
 
@@ -49,7 +49,7 @@ describe('useResponsiveSvgSelection', () => {
     expect(sizeText).toMatch(/\d+x\d+/);
 
     // Size should be at least minSize
-    const [width, height] = sizeText!.split('x').map(Number);
+    const [width, height] = sizeText ? sizeText.split('x').map(Number) : [0, 0];
     expect(width).toBeGreaterThanOrEqual(400);
     expect(height).toBeGreaterThanOrEqual(400);
   });
@@ -103,7 +103,7 @@ describe('useResponsiveSvgSelection', () => {
     expect(svg).toHaveAttribute('id', 'test-svg');
   });
 
-  it('should set selection to non-null after mounting', async () => {
+  it('should set selection to non-null after mounting', () => {
     const { getByTestId } = render(<TestComponent minSize={[300, 300]} />);
 
     // Selection should be created after mount

@@ -8,7 +8,8 @@ import { vi } from 'vitest';
 
 // Mock ResizeObserver for jsdom environment
 // ResizeObserver is not available in jsdom, causing tests to fail
-global.ResizeObserver = class ResizeObserver {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+(globalThis as any).ResizeObserver = class ResizeObserver {
   observe = vi.fn();
   unobserve = vi.fn();
   disconnect = vi.fn();
