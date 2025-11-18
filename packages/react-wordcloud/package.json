@@ -16,6 +16,8 @@
   "files": [
     "dist",
     "README.md",
+    "CHANGELOG.md",
+    "MIGRATION.md",
     "LICENSE"
   ],
   "sideEffects": false,
@@ -29,7 +31,9 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "clean": "rm -rf dist .turbo node_modules"
+    "clean": "rm -rf dist .turbo node_modules",
+    "prepublishOnly": "pnpm run build && pnpm run lint && pnpm run typecheck && pnpm run test",
+    "prepack": "pnpm run build"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -73,19 +77,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cp949/react-wordcloud.git",
+    "url": "https://github.com/chrisrzhou/react-wordcloud.git",
     "directory": "packages/react-wordcloud"
   },
+  "bugs": {
+    "url": "https://github.com/chrisrzhou/react-wordcloud/issues"
+  },
+  "homepage": "https://github.com/chrisrzhou/react-wordcloud#readme",
   "keywords": [
     "react",
+    "react-component",
     "wordcloud",
-    "d3",
-    "visualization",
-    "typescript",
     "word-cloud",
-    "tag-cloud"
+    "tag-cloud",
+    "d3",
+    "d3js",
+    "visualization",
+    "data-viz",
+    "typescript",
+    "react18",
+    "react19",
+    "security",
+    "modern"
   ],
-  "author": "cp949",
+  "author": "Chris Zhou <chrisrzhou@pm.me> (https://github.com/chrisrzhou)",
   "license": "MIT",
   "publishConfig": {
     "access": "public",

@@ -1,0 +1,40 @@
+# Source files
+src/
+test/
+__tests__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Config files
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+.eslintrc*
+.prettierrc*
+
+# Build tools
+.turbo/
+node_modules/
+coverage/
+
+# Development
+*.log
+.DS_Store
+.env
+.env.*
+
+# Documentation (keep only README, CHANGELOG, MIGRATION in npm)
+docs/
+claudedocs/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.vscode/
+.idea/
