@@ -18,6 +18,9 @@ _tmp
 .turbo
 .next
 
+# test coverage
+coverage
+
 # claude
 CLAUDE.md
 claudedocs/
