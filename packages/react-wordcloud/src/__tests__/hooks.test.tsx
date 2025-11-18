@@ -55,9 +55,7 @@ describe('useResponsiveSvgSelection', () => {
   });
 
   it('should use initialSize when provided', () => {
-    const { getByTestId } = render(
-      <TestComponent minSize={[300, 300]} initialSize={[800, 600]} />
-    );
+    const { getByTestId } = render(<TestComponent minSize={[300, 300]} initialSize={[800, 600]} />);
 
     const sizeText = getByTestId('size').textContent;
     expect(sizeText).toBe('800x600');
@@ -65,9 +63,7 @@ describe('useResponsiveSvgSelection', () => {
 
   it('should apply minSize constraints even with initialSize', () => {
     // initialSize is smaller than minSize
-    const { getByTestId } = render(
-      <TestComponent minSize={[500, 500]} initialSize={[200, 200]} />
-    );
+    const { getByTestId } = render(<TestComponent minSize={[500, 500]} initialSize={[200, 200]} />);
 
     const sizeText = getByTestId('size').textContent;
     // Should use minSize since initialSize is smaller
@@ -92,10 +88,7 @@ describe('useResponsiveSvgSelection', () => {
 
   it('should apply custom SVG attributes', () => {
     const { container } = render(
-      <TestComponent
-        minSize={[300, 300]}
-        svgAttributes={{ class: 'custom-svg', id: 'test-svg' }}
-      />
+      <TestComponent minSize={[300, 300]} svgAttributes={{ class: 'custom-svg', id: 'test-svg' }} />
     );
 
     const svg = container.querySelector('svg');
