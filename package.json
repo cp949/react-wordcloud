@@ -1,6 +1,7 @@
 {
   "name": "cp949-wordcloud-monorepo",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "description": "React + D3 wordcloud component library with security fixes and modern tooling",
   "repository": {
@@ -19,8 +20,15 @@
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "prettier": "^3.4.2",
     "turbo": "^2.3.3",
-    "prettier": "^3.4.2"
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.47.0"
   },
   "packageManager": "pnpm@10.22.0",
   "engines": {

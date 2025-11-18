@@ -39,11 +39,11 @@ export default function Cloud() {
 
   let killed = false;
 
-  cloud.canvas = function(_) {
+  cloud.canvas = function (_) {
     return arguments.length ? ((canvas = functor(_)), cloud) : canvas;
   };
 
-  cloud.start = function() {
+  cloud.start = function () {
     let contextAndRatio = getContext(canvas()),
       board = zeroArray((size[0] >> 5) * size[1]),
       bounds = null,
@@ -51,7 +51,7 @@ export default function Cloud() {
       i = -1,
       tags = [],
       data = words
-        .map(function(d, i) {
+        .map(function (d, i) {
           d.text = text.call(this, d, i);
           d.font = font.call(this, d, i);
           d.style = fontStyle.call(this, d, i);
@@ -61,7 +61,7 @@ export default function Cloud() {
           d.padding = padding.call(this, d, i);
           return d;
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return b.size - a.size;
         });
 
@@ -116,7 +116,7 @@ export default function Cloud() {
     return cloud;
   };
 
-  cloud.stop = function() {
+  cloud.stop = function () {
     if (timer) {
       clearInterval(timer);
       timer = null;
@@ -127,9 +127,7 @@ export default function Cloud() {
 
   function getContext(canvas) {
     canvas.width = canvas.height = 1;
-    const ratio = Math.sqrt(
-      canvas.getContext('2d').getImageData(0, 0, 1, 1).data.length >> 2,
-    );
+    const ratio = Math.sqrt(canvas.getContext('2d').getImageData(0, 0, 1, 1).data.length >> 2);
     canvas.width = (cw << 5) / ratio;
     canvas.height = ch / ratio;
 
@@ -141,7 +139,10 @@ export default function Cloud() {
   }
 
   function place(board, tag, bounds) {
-    let perimeter = [{ x: 0, y: 0 }, { x: size[0], y: size[1] }],
+    let perimeter = [
+        { x: 0, y: 0 },
+        { x: size[0], y: size[1] },
+      ],
       startX = tag.x,
       startY = tag.y,
       maxDelta = Math.sqrt(size[0] * size[0] + size[1] * size[1]),
@@ -183,8 +184,7 @@ export default function Cloud() {
           for (let j = 0; j < h; j++) {
             last = 0;
             for (let i = 0; i <= w; i++) {
-              board[x + i] |=
-                (last << msx) | (i < w ? (last = sprite[j * w + i]) >>> sx : 0);
+              board[x + i] |= (last << msx) | (i < w ? (last = sprite[j * w + i]) >>> sx : 0);
             }
             x += sw;
           }
@@ -196,57 +196,55 @@ export default function Cloud() {
     return false;
   }
 
-  cloud.timeInterval = function(_) {
-    return arguments.length
-      ? ((timeInterval = _ == null ? Infinity : _), cloud)
-      : timeInterval;
+  cloud.timeInterval = function (_) {
+    return arguments.length ? ((timeInterval = _ == null ? Infinity : _), cloud) : timeInterval;
   };
 
-  cloud.words = function(_) {
+  cloud.words = function (_) {
     return arguments.length ? ((words = _), cloud) : words;
   };
 
-  cloud.size = function(_) {
+  cloud.size = function (_) {
     return arguments.length ? ((size = [+_[0], +_[1]]), cloud) : size;
   };
 
-  cloud.font = function(_) {
+  cloud.font = function (_) {
     return arguments.length ? ((font = functor(_)), cloud) : font;
   };
 
-  cloud.fontStyle = function(_) {
+  cloud.fontStyle = function (_) {
     return arguments.length ? ((fontStyle = functor(_)), cloud) : fontStyle;
   };
 
-  cloud.fontWeight = function(_) {
+  cloud.fontWeight = function (_) {
     return arguments.length ? ((fontWeight = functor(_)), cloud) : fontWeight;
   };
 
-  cloud.rotate = function(_) {
+  cloud.rotate = function (_) {
     return arguments.length ? ((rotate = functor(_)), cloud) : rotate;
   };
 
-  cloud.text = function(_) {
+  cloud.text = function (_) {
     return arguments.length ? ((text = functor(_)), cloud) : text;
   };
 
-  cloud.spiral = function(_) {
+  cloud.spiral = function (_) {
     return arguments.length ? ((spiral = spirals[_] || _), cloud) : spiral;
   };
 
-  cloud.fontSize = function(_) {
+  cloud.fontSize = function (_) {
     return arguments.length ? ((fontSize = functor(_)), cloud) : fontSize;
   };
 
-  cloud.padding = function(_) {
+  cloud.padding = function (_) {
     return arguments.length ? ((padding = functor(_)), cloud) : padding;
   };
 
-  cloud.random = function(_) {
+  cloud.random = function (_) {
     return arguments.length ? ((random = _), cloud) : random;
   };
 
-  cloud.on = function() {
+  cloud.on = function () {
     const value = event.on.apply(event, arguments);
     return value === event ? cloud : value;
   };
@@ -294,14 +292,7 @@ function cloudSprite(contextAndRatio, d, data, di) {
   while (++di < n) {
     d = data[di];
     c.save();
-    c.font =
-      d.style +
-      ' ' +
-      d.weight +
-      ' ' +
-      ~~((d.size + 1) / ratio) +
-      'px ' +
-      d.font;
+    c.font = d.style + ' ' + d.weight + ' ' + ~~((d.size + 1) / ratio) + 'px ' + d.font;
     var w = c.measureText(d.text + 'm').width * ratio,
       h = d.size << 1;
     if (d.rotate) {
@@ -311,8 +302,7 @@ function cloudSprite(contextAndRatio, d, data, di) {
         wsr = w * sr,
         hcr = h * cr,
         hsr = h * sr;
-      w =
-        ((Math.max(Math.abs(wcr + hsr), Math.abs(wcr - hsr)) + 0x1f) >> 5) << 5;
+      w = ((Math.max(Math.abs(wcr + hsr), Math.abs(wcr - hsr)) + 0x1f) >> 5) << 5;
       h = ~~Math.max(Math.abs(wsr + hcr), Math.abs(wsr - hcr));
     } else {
       w = ((w + 0x1f) >> 5) << 5;
@@ -362,9 +352,7 @@ function cloudSprite(contextAndRatio, d, data, di) {
     for (let j = 0; j < h; j++) {
       for (var i = 0; i < w; i++) {
         const k = w32 * j + (i >> 5),
-          m = pixels[((y + j) * (cw << 5) + (x + i)) << 2]
-            ? 1 << (31 - (i % 32))
-            : 0;
+          m = pixels[((y + j) * (cw << 5) + (x + i)) << 2] ? 1 << (31 - (i % 32)) : 0;
         sprite[k] |= m;
         seen |= m;
       }
@@ -395,10 +383,7 @@ function cloudCollide(tag, board, sw) {
   for (let j = 0; j < h; j++) {
     last = 0;
     for (let i = 0; i <= w; i++) {
-      if (
-        ((last << msx) | (i < w ? (last = sprite[j * w + i]) >>> sx : 0)) &
-        board[x + i]
-      )
+      if (((last << msx) | (i < w ? (last = sprite[j * w + i]) >>> sx : 0)) & board[x + i])
         return true;
     }
     x += sw;
@@ -416,17 +401,12 @@ function cloudBounds(bounds, d) {
 }
 
 function collideRects(a, b) {
-  return (
-    a.x + a.x1 > b[0].x &&
-    a.x + a.x0 < b[1].x &&
-    a.y + a.y1 > b[0].y &&
-    a.y + a.y0 < b[1].y
-  );
+  return a.x + a.x1 > b[0].x && a.x + a.x0 < b[1].x && a.y + a.y1 > b[0].y && a.y + a.y0 < b[1].y;
 }
 
 function archimedeanSpiral(size) {
   const e = size[0] / size[1];
-  return function(t) {
+  return function (t) {
     return [e * (t *= 0.1) * Math.cos(t), t * Math.sin(t)];
   };
 }
@@ -436,7 +416,7 @@ function rectangularSpiral(size) {
     dx = (dy * size[0]) / size[1],
     x = 0,
     y = 0;
-  return function(t) {
+  return function (t) {
     const sign = t < 0 ? -1 : 1;
     // See triangular numbers: T_n = n * (n + 1) / 2.
     switch ((Math.sqrt(1 + 4 * sign * t) - sign) & 3) {
@@ -469,7 +449,7 @@ function cloudCanvas() {
 function functor(d) {
   return typeof d === 'function'
     ? d
-    : function() {
+    : function () {
         return d;
       };
 }

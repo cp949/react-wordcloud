@@ -40,10 +40,10 @@ const words = [
     text: 'bad',
     value: 17,
   },
-]
+];
 
 function SimpleWordcloud() {
-  return <ReactWordcloud words={words} />
+  return <ReactWordcloud words={words} />;
 }
 ```
 

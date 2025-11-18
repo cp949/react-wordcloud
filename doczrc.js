@@ -7,14 +7,7 @@ export default {
     'Props',
     {
       name: 'Usage',
-      menu: [
-        'Basic',
-        'Size',
-        'Callbacks',
-        'Transitions',
-        'Options',
-        'Optimizations',
-      ],
+      menu: ['Basic', 'Size', 'Callbacks', 'Transitions', 'Options', 'Optimizations'],
     },
     'FAQ',
     'Changelog',
