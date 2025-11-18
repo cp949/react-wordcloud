@@ -14,3 +14,9 @@ node_modules
 .docz
 dist
 package-lock.json
+_tmp
+
+# claude
+CLAUDE.md
+claudedocs/
+.claude/
