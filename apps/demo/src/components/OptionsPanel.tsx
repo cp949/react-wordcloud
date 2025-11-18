@@ -81,10 +81,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
                 max="100"
                 value={options.fontSizes?.[0]}
                 onChange={(e) =>
-                  handleChange('fontSizes', [
-                    Number(e.target.value),
-                    options.fontSizes?.[1] ?? 32,
-                  ])
+                  handleChange('fontSizes', [Number(e.target.value), options.fontSizes?.[1] ?? 32])
                 }
                 className="w-1/2 px-3 py-2 border rounded-md"
                 placeholder="Min"
@@ -95,10 +92,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
                 max="200"
                 value={options.fontSizes?.[1]}
                 onChange={(e) =>
-                  handleChange('fontSizes', [
-                    options.fontSizes?.[0] ?? 4,
-                    Number(e.target.value),
-                  ])
+                  handleChange('fontSizes', [options.fontSizes?.[0] ?? 4, Number(e.target.value)])
                 }
                 className="w-1/2 px-3 py-2 border rounded-md"
                 placeholder="Max"
@@ -108,9 +102,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Padding */}
           <div>
-            <label className="block text-sm font-medium mb-1">
-              Padding: {options.padding}
-            </label>
+            <label className="block text-sm font-medium mb-1">Padding: {options.padding}</label>
             <input
               type="range"
               min="0"

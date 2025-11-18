@@ -19,9 +19,7 @@ export default function ExamplesPage() {
       {/* Example 1: Minimal */}
       <section>
         <h2 className="text-3xl font-bold mb-4">Minimal Example</h2>
-        <p className="text-gray-600 mb-4">
-          The simplest possible configuration with just words.
-        </p>
+        <p className="text-gray-600 mb-4">The simplest possible configuration with just words.</p>
         <div className="border rounded-lg p-4 bg-white mb-4" style={{ height: '400px' }}>
           <ReactWordcloud words={sampleWords.slice(0, 15)} />
         </div>
@@ -71,9 +69,7 @@ export function MinimalExample() {
       {/* Example 3: No Rotation */}
       <section>
         <h2 className="text-3xl font-bold mb-4">No Rotation</h2>
-        <p className="text-gray-600 mb-4">
-          Keep all words horizontal for better readability.
-        </p>
+        <p className="text-gray-600 mb-4">Keep all words horizontal for better readability.</p>
         <div className="border rounded-lg p-4 bg-white mb-4" style={{ height: '400px' }}>
           <ReactWordcloud
             words={sampleWords.slice(0, 20)}
@@ -177,9 +173,7 @@ export function MinimalExample() {
       {/* Example 7: Fast Transitions */}
       <section>
         <h2 className="text-3xl font-bold mb-4">Fast Transitions</h2>
-        <p className="text-gray-600 mb-4">
-          Reduce transition duration for snappier updates.
-        </p>
+        <p className="text-gray-600 mb-4">Reduce transition duration for snappier updates.</p>
         <div className="border rounded-lg p-4 bg-white mb-4" style={{ height: '400px' }}>
           <ReactWordcloud
             words={sampleWords}

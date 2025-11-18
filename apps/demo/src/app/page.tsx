@@ -89,9 +89,7 @@ export function MyWordcloud() {
       {/* Code Example */}
       <section>
         <h2 className="text-3xl font-bold mb-4">Code Example</h2>
-        <p className="text-gray-600 mb-4">
-          Here&apos;s the code for the current configuration:
-        </p>
+        <p className="text-gray-600 mb-4">Here&apos;s the code for the current configuration:</p>
         <CodeSnippet code={codeExample} />
       </section>
 
