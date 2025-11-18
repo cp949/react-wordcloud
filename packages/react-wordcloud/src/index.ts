@@ -21,3 +21,17 @@ export type {
   Selection,
   Enter,
 } from './types.js';
+
+// Export utility functions
+export {
+  choose,
+  getDefaultColors,
+  getFontScale,
+  getFontSize,
+  getText,
+  getTransform,
+  rotate,
+} from './utils.js';
+
+// Export utility types
+export type { LayoutWord } from './utils.js';
