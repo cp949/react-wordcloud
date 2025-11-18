@@ -1,0 +1,81 @@
+{
+  "name": "@cp949/react-wordcloud",
+  "version": "1.0.0",
+  "description": "React + D3 wordcloud component with security fixes and modern tooling",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "d3-array": "^3.2.4",
+    "d3-cloud": "^1.2.7",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
+    "lodash.debounce": "^4.0.8",
+    "resize-observer-polyfill": "^1.5.1",
+    "seedrandom": "^3.0.5",
+    "tippy.js": "^6.3.7"
+  },
+  "devDependencies": {
+    "@types/d3-array": "^3.2.1",
+    "@types/d3-cloud": "^1.2.9",
+    "@types/d3-scale": "^4.0.8",
+    "@types/d3-scale-chromatic": "^3.0.3",
+    "@types/d3-selection": "^3.0.11",
+    "@types/d3-transition": "^3.0.9",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/seedrandom": "^3.0.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cp949/react-wordcloud.git",
+    "directory": "packages/react-wordcloud"
+  },
+  "keywords": [
+    "react",
+    "wordcloud",
+    "d3",
+    "visualization",
+    "typescript",
+    "word-cloud",
+    "tag-cloud"
+  ],
+  "author": "cp949",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
