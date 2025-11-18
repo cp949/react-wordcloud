@@ -10,6 +10,9 @@ export default defineConfig({
     // Enable global test APIs (describe, it, expect)
     globals: true,
 
+    // Disable watch mode by default
+    watch: false,
+
     // Setup files to run before tests
     setupFiles: ['./test/setup.ts'],
 
