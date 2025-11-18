@@ -1,6 +1,6 @@
 {
   "name": "@cp949/react-wordcloud",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React + D3 wordcloud component with security fixes and modern tooling",
   "type": "module",
   "main": "./dist/index.cjs",
