@@ -26,7 +26,7 @@ pnpm audit --prod || { echo "Audit failed; check or rerun when registry reachabl
 
 echo
 echo "6. Demo build"
-cd ../../packages/demo && pnpm build
+cd ../../apps/demo && pnpm build
 cd -
 
 echo
