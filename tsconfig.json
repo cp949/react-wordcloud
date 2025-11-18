@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["node_modules", "dist", ".next", "coverage", "docs", "src", "index.js"]
+  "exclude": ["node_modules", "dist", ".next", "coverage"]
 }
