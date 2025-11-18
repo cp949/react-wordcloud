@@ -1,56 +1,96 @@
 # @cp949/react-wordcloud
 
-Modern, secure React wordcloud component built with TypeScript, D3.js v7+, and zero security vulnerabilities.
+Modern, secure React wordcloud component built with TypeScript and D3.js v7+
 
-This is a modernized fork of [react-wordcloud](https://github.com/chrisrzhou/react-wordcloud) with security fixes and React 18/19 support.
+[![NPM](https://img.shields.io/npm/v/@cp949/react-wordcloud.svg)](https://www.npmjs.com/package/@cp949/react-wordcloud)
+[![License](https://img.shields.io/github/license/cp949/react-wordcloud)](./LICENSE)
 
-## 🚀 Quick Links
+**[한국어 문서](./README.ko.md)** | English
 
-- **Package**: [packages/react-wordcloud](./packages/react-wordcloud)
-- **Demo**: [apps/demo](./apps/demo)
-- **Documentation**: [README](./packages/react-wordcloud/README.md)
-- **Migration Guide**: [MIGRATION.md](./packages/react-wordcloud/MIGRATION.md)
-- **Changelog**: [CHANGELOG.md](./packages/react-wordcloud/CHANGELOG.md)
+## 🚀 Installation
 
-## 📦 Packages
+```bash
+npm install @cp949/react-wordcloud
+```
 
-This is a Turborepo monorepo containing:
+📖 **Documentation**: [packages/react-wordcloud](./packages/react-wordcloud)
+📦 **NPM Package**: https://www.npmjs.com/package/@cp949/react-wordcloud
+
+---
+
+## Project Overview
+
+This project is a fork of [chrisrzhou/react-wordcloud](https://github.com/chrisrzhou/react-wordcloud).
+
+### Why Fork?
+
+This fork was created to address a critical security vulnerability found in the d3-color library used by the original project.
+
+## Security Vulnerability Details
+
+- **CVE/GHSA**: GHSA-36jr-mh4h-2g58
+- **Type**: ReDoS (Regular Expression Denial of Service)
+- **Severity**: High
+- **CWE**: CWE-400 (Uncontrolled Resource Consumption)
+- **Affected Versions**: d3-color < 3.1.0
+- **Fixed Version**: d3-color >= 3.1.0
+
+### Vulnerability Description
+
+A ReDoS vulnerability was discovered in the regular expression processing logic of d3-color versions prior to 3.1.0. Maliciously crafted input can cause exponential growth in regex matching time, leading to resource exhaustion.
+
+### Resolution
+
+This fork resolves the vulnerability by upgrading all D3 dependencies to v7+:
+
+- ✅ Using d3-color 3.1.0 or higher
+- ✅ All D3-related packages updated to latest safe versions
+- ✅ npm audit verified: 0 vulnerabilities
+
+---
+
+## 📦 Monorepo Structure
+
+This project uses Turborepo for monorepo management:
+
+```
+cp949-wordcloud/
+├── packages/
+│   └── react-wordcloud/    # Main library (published to NPM)
+├── apps/
+│   └── demo/               # Next.js demo application
+└── README.md              # ← You are here
+```
 
 ### `@cp949/react-wordcloud`
 
-The main React wordcloud component library.
+React wordcloud component library published to NPM
 
+Key Features:
 - 🔒 Zero security vulnerabilities
 - ⚡ React 18 & 19 support
-- 💯 TypeScript 5.9 with strict mode
+- 💯 TypeScript 5.9 strict mode
 - 🎨 Fully customizable
 - 📱 Responsive and accessible
 
-[View Package →](./packages/react-wordcloud)
+[View Package Documentation →](./packages/react-wordcloud)
 
 ### Demo Application
 
-Interactive demo built with Next.js 15 showcasing all features.
-
-- Live examples with code snippets
-- Interactive options panel
-- Multiple configuration examples
-- Responsive design
+Interactive demo application built with Next.js 15
 
 [View Demo →](./apps/demo)
 
-## 🛠️ Development
+---
 
-This project uses:
+## 🛠️ Development Setup
 
-- **Turborepo**: Monorepo management
-- **pnpm**: Package management
-- **TypeScript**: Type safety
-- **Vitest**: Unit testing
-- **Next.js**: Demo application
-- **tsup**: Library bundling
+### System Requirements
 
-### Getting Started
+- Node.js >= 20.0.0
+- pnpm >= 9.0.0
+
+### Installation & Build
 
 ```bash
 # Install dependencies
@@ -68,80 +108,57 @@ pnpm typecheck
 # Lint
 pnpm lint
 
-# Format
+# Format code
 pnpm format
-
-# Run demo app
-cd apps/demo
-pnpm dev
 ```
 
-### Project Structure
+### Development Commands
 
-```
-.
-├── packages/
-│   └── react-wordcloud/     # Main library
-│       ├── src/
-│       │   ├── ReactWordcloud.tsx
-│       │   ├── types.ts
-│       │   ├── defaults.ts
-│       │   ├── hooks/
-│       │   ├── render/
-│       │   └── utils/
-│       ├── test/
-│       ├── README.md
-│       ├── MIGRATION.md
-│       └── CHANGELOG.md
-├── apps/
-│   └── demo/                # Next.js demo app
-│       ├── src/
-│       │   ├── app/
-│       │   ├── components/
-│       │   └── lib/
-│       └── package.json
-├── turbo.json
-└── pnpm-workspace.yaml
+```bash
+# Run library in watch mode
+pnpm --filter @cp949/react-wordcloud dev
+
+# Run demo application
+pnpm --filter @cp949/demo dev
+
+# Run tests in watch mode
+pnpm --filter @cp949/react-wordcloud test:watch
+
+# Run tests with coverage
+pnpm --filter @cp949/react-wordcloud test:coverage
 ```
 
-## 🔒 Security
+### Tech Stack
 
-This fork addresses critical security vulnerabilities:
+- **Turborepo**: Monorepo management
+- **pnpm**: Package manager
+- **TypeScript**: Static type checking
+- **React**: UI library
+- **D3.js v7+**: Data visualization
+- **Vitest**: Unit testing framework
+- **Next.js 15**: Demo application framework
+- **tsup**: Library bundler
+- **Tailwind CSS v4**: Styling framework (demo)
 
-- **CVE-2021-39154**: d3-color < 3.1.0 ReDoS vulnerability
-- Updated all D3 dependencies to v7+
-- Zero npm audit vulnerabilities
-
-## 📝 Why This Fork?
-
-The original `react-wordcloud` package:
-
-- Had security vulnerabilities (d3-color ReDoS)
-- Lacked React 19 support
-- Used deprecated D3 v5 patterns
-- Had no active maintenance
-
-This fork provides:
-
-- ✅ Security fixes
-- ✅ React 18/19 compatibility
-- ✅ Modern tooling (TypeScript 5.9, Vitest, tsup)
-- ✅ Comprehensive documentation
-- ✅ Active maintenance
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome via Pull Requests.
 
-### Development Workflow
+### Development Process
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
 4. Run tests (`pnpm test`)
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
+5. Run type checking (`pnpm typecheck`)
+6. Format code (`pnpm format`)
+7. Commit your changes (`git commit -m 'Add amazing feature'`)
+8. Push to branch (`git push origin feature/amazing-feature`)
+9. Create a Pull Request
+
+---
 
 ## 📄 License
 
@@ -149,16 +166,21 @@ MIT © Chris Zhou
 
 This project is a fork of [react-wordcloud](https://github.com/chrisrzhou/react-wordcloud) and maintains the same MIT license.
 
+---
+
 ## 🙏 Credits
 
 - **Original Author**: Chris Zhou ([@chrisrzhou](https://github.com/chrisrzhou))
 - **Original Project**: [react-wordcloud](https://github.com/chrisrzhou/react-wordcloud)
-- **Fork Maintainer**: [@cp949](https://github.com/cp949)
+- **Fork Maintainer**: jjfive ([@cp949](https://github.com/cp949))
+
+---
 
 ## 📚 Resources
 
+- [NPM Package](https://www.npmjs.com/package/@cp949/react-wordcloud)
+- [Package Documentation](./packages/react-wordcloud)
+- [Security Advisory](https://github.com/advisories/GHSA-36jr-mh4h-2g58)
 - [React Documentation](https://react.dev)
 - [D3.js Documentation](https://d3js.org)
-- [TypeScript Documentation](https://www.typescriptlang.org)
 - [Turborepo Documentation](https://turbo.build)
-- [Next.js Documentation](https://nextjs.org)

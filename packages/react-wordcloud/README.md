@@ -1,10 +1,12 @@
 # @cp949/react-wordcloud
 
-Modern, secure React wordcloud component built with TypeScript, D3.js v7+, and zero security vulnerabilities.
+Modern, secure React wordcloud component built with TypeScript and D3.js v7+
 
 [![NPM Version](https://img.shields.io/npm/v/@cp949/react-wordcloud.svg)](https://www.npmjs.com/package/@cp949/react-wordcloud)
-[![License](https://img.shields.io/npm/l/@cp949/react-wordcloud.svg)](https://github.com/chrisrzhou/react-wordcloud/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/@cp949/react-wordcloud.svg)](https://github.com/cp949/react-wordcloud/blob/main/LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
+
+**[한국어 문서](./README.ko.md)** | English
 
 ## Features
 
@@ -46,7 +48,7 @@ function App() {
 }
 ```
 
-## Props
+## API Reference
 
 ### `words` (required)
 
@@ -143,7 +145,7 @@ Minimum size `[width, height]` in pixels. Default: `[300, 300]`.
 
 ### `size` (optional)
 
-Fixed size `[width, height]` in pixels. When not provided, the component will use the container size.
+Fixed size `[width, height]` in pixels. When not provided, the component uses the container size.
 
 ```tsx
 <ReactWordcloud words={words} size={[800, 600]} />
@@ -222,8 +224,7 @@ This library is a modernized fork of [react-wordcloud](https://github.com/chrisr
 - import ReactWordcloud from 'react-wordcloud';
 + import { ReactWordcloud } from '@cp949/react-wordcloud';
 
-- <ReactWordcloud words={words} />
-+ <ReactWordcloud words={words} />
+  <ReactWordcloud words={words} />
 ```
 
 See [MIGRATION.md](./MIGRATION.md) for detailed migration guide.
