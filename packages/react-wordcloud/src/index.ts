@@ -35,3 +35,6 @@ export {
 
 // Export utility types
 export type { LayoutWord } from './utils.js';
+
+// Export React hooks
+export { useResponsiveSvgSelection } from './hooks.js';
