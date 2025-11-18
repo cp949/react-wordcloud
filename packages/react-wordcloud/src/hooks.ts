@@ -29,9 +29,7 @@ export function useResponsiveSvgSelection(
     }
 
     // Create SVG element with D3
-    let svg = select(element)
-      .append('svg')
-      .style('display', 'block'); // Native inline svg leaves undesired white space
+    let svg = select(element).append('svg').style('display', 'block'); // Native inline svg leaves undesired white space
 
     // Apply custom SVG attributes if provided
     if (typeof svgAttributes === 'object' && svgAttributes !== null) {

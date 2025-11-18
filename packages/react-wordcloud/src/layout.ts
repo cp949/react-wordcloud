@@ -3,13 +3,7 @@ import { descending } from 'd3-array';
 import d3Cloud from 'd3-cloud';
 import seedrandom from 'seedrandom';
 import tippy, { Instance as TippyInstance } from 'tippy.js';
-import type {
-  Word,
-  MinMaxPair,
-  Options,
-  CallbacksProp,
-  Selection,
-} from './types.js';
+import type { Word, MinMaxPair, Options, CallbacksProp, Selection } from './types.js';
 import type { LayoutWord } from './utils.js';
 import { choose, getFontScale, getFontSize, getText, getTransform, rotate } from './utils.js';
 
@@ -152,8 +146,7 @@ export interface RenderParams {
  */
 export function render(params: RenderParams): void {
   const { callbacks, options, random, selection, words } = params;
-  const { getWordColor, getWordTooltip, onWordClick, onWordMouseOver, onWordMouseOut } =
-    callbacks;
+  const { getWordColor, getWordTooltip, onWordClick, onWordMouseOver, onWordMouseOut } = callbacks;
   const { colors, enableTooltip, fontStyle, fontWeight, textAttributes, tooltipOptions } = options;
   const { fontFamily, transitionDuration } = options;
 

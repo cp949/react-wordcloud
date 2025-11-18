@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import debounce from 'lodash.debounce';
 import type { Props, Callbacks, Options } from './types.js';
 import { useResponsiveSvgSelection } from './hooks.js';
-import { layout } from './layout.js';
+import { layout, type LayoutParams } from './layout.js';
 import { defaultCallbacks, defaultOptions } from './defaults.js';
 
 /**
@@ -19,15 +19,21 @@ export function ReactWordcloud({
   words,
 }: Props): React.JSX.Element {
   // Merge user-provided callbacks and options with defaults
-  const mergedCallbacks: Callbacks = {
-    ...defaultCallbacks,
-    ...callbacks,
-  };
+  const mergedCallbacks: Callbacks = useMemo(
+    () => ({
+      ...defaultCallbacks,
+      ...callbacks,
+    }),
+    [callbacks]
+  );
 
-  const mergedOptions: Options = {
-    ...defaultOptions,
-    ...options,
-  };
+  const mergedOptions: Options = useMemo(
+    () => ({
+      ...defaultOptions,
+      ...options,
+    }),
+    [options]
+  );
 
   // Get responsive SVG selection and size
   const [ref, selection, calculatedSize] = useResponsiveSvgSelection(
@@ -38,7 +44,7 @@ export function ReactWordcloud({
 
   // Debounced layout function to prevent excessive re-renders
   const debouncedLayout = useRef(
-    debounce((params) => {
+    debounce((params: LayoutParams) => {
       layout(params);
     }, 100)
   ).current;
@@ -49,21 +55,13 @@ export function ReactWordcloud({
       debouncedLayout({
         callbacks: mergedCallbacks,
         maxWords,
-        options: mergedOptions,
+        options: mergedOptions as Required<Options>,
         selection,
         size: calculatedSize,
         words,
       });
     }
-  }, [
-    selection,
-    words,
-    maxWords,
-    calculatedSize,
-    mergedCallbacks,
-    mergedOptions,
-    debouncedLayout,
-  ]);
+  }, [selection, words, maxWords, calculatedSize, mergedCallbacks, mergedOptions, debouncedLayout]);
 
   return <div ref={ref} style={style} />;
 }

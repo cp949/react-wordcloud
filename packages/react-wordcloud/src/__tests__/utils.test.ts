@@ -12,7 +12,7 @@ import {
   getTransform,
   rotate,
 } from '../utils.js';
-import type { Word, Scale } from '../types.js';
+import type { Word } from '../types.js';
 
 describe('utils', () => {
   describe('choose', () => {
