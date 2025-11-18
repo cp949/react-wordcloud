@@ -38,3 +38,9 @@ export type { LayoutWord } from './utils.js';
 
 // Export React hooks
 export { useResponsiveSvgSelection } from './hooks.js';
+
+// Export main component
+export { ReactWordcloud, default } from './ReactWordcloud.js';
+
+// Export defaults
+export { defaultCallbacks, defaultOptions } from './defaults.js';

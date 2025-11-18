@@ -217,6 +217,10 @@ export interface Props {
    */
   size?: MinMaxPair;
   /**
+   * CSS styles for the container div.
+   */
+  style?: React.CSSProperties;
+  /**
    * An array of words. A word is an object that must contain the 'text' and 'value' keys.
    */
   words: Word[];
