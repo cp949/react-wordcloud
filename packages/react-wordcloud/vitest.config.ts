@@ -14,7 +14,7 @@ export default defineConfig({
     watch: false,
 
     // Setup files to run before tests
-    setupFiles: ['./test/setup.ts'],
+    setupFiles: ['./src/__tests__/setup.ts'],
 
     // Coverage configuration
     coverage: {
@@ -23,7 +23,7 @@ export default defineConfig({
       exclude: [
         'node_modules/',
         'dist/',
-        'test/',
+        '**/__tests__/**',
         '**/*.d.ts',
         '**/*.config.*',
         '**/index.ts', // Re-export file
