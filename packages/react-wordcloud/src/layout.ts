@@ -2,6 +2,7 @@ import 'd3-transition';
 import { descending } from 'd3-array';
 import d3Cloud from 'd3-cloud';
 import seedrandom from 'seedrandom';
+import tippy, { Instance as TippyInstance } from 'tippy.js';
 import type {
   Word,
   MinMaxPair,
@@ -10,7 +11,7 @@ import type {
   Selection,
 } from './types.js';
 import type { LayoutWord } from './utils.js';
-import { getFontScale, getText, rotate } from './utils.js';
+import { choose, getFontScale, getFontSize, getText, getTransform, rotate } from './utils.js';
 
 /**
  * Layout function parameters
@@ -25,24 +26,12 @@ export interface LayoutParams {
 }
 
 /**
- * Render function type (will be implemented in Step 09)
- */
-type RenderFunction = (params: {
-  callbacks: CallbacksProp;
-  options: Required<Options>;
-  random: seedrandom.PRNG;
-  selection: Selection;
-  words: LayoutWord[];
-}) => void;
-
-/**
  * Layout function - configures and executes d3-cloud word layout
  * Implements recursive font scaling to fit all words
  *
  * @param params - Layout parameters
- * @param renderFn - Render callback function
  */
-export function layout(params: LayoutParams, renderFn: RenderFunction): void {
+export function layout(params: LayoutParams): void {
   const MAX_LAYOUT_ATTEMPTS = 10;
   const SHRINK_FACTOR = 0.95;
 
@@ -128,7 +117,7 @@ export function layout(params: LayoutParams, renderFn: RenderFunction): void {
           draw([minFontSize, maxFontSize], attempts + 1);
         } else {
           // Layout successful or max attempts reached - render words
-          renderFn({
+          render({
             callbacks,
             options,
             random,
@@ -142,4 +131,135 @@ export function layout(params: LayoutParams, renderFn: RenderFunction): void {
 
   // Start layout with initial font sizes
   draw(fontSizes);
+}
+
+/**
+ * Render function parameters
+ */
+export interface RenderParams {
+  callbacks: CallbacksProp;
+  options: Required<Options>;
+  random: seedrandom.PRNG;
+  selection: Selection;
+  words: LayoutWord[];
+}
+
+/**
+ * Render function - renders words using D3 selection with enter-update-exit pattern
+ * Handles SVG text elements, transitions, tooltips, and event handlers
+ *
+ * @param params - Render parameters
+ */
+export function render(params: RenderParams): void {
+  const { callbacks, options, random, selection, words } = params;
+  const { getWordColor, getWordTooltip, onWordClick, onWordMouseOver, onWordMouseOut } =
+    callbacks;
+  const { colors, enableTooltip, fontStyle, fontWeight, textAttributes, tooltipOptions } = options;
+  const { fontFamily, transitionDuration } = options;
+
+  /**
+   * Get fill color for a word
+   */
+  function getFill(word: LayoutWord): string {
+    return getWordColor ? getWordColor(word) : choose(colors, random);
+  }
+
+  // Tooltip instance tracking
+  let tooltipInstance: TippyInstance | null = null;
+
+  // Select all text elements and bind data
+  const vizWords = selection.selectAll<SVGTextElement, LayoutWord>('text').data(words);
+
+  // Enter-update-exit pattern
+  vizWords.join(
+    // Enter: create new text elements
+    (enter) => {
+      let text = enter
+        .append('text')
+        .on('click', function (event: MouseEvent, word: LayoutWord) {
+          if (onWordClick) {
+            onWordClick(word, event);
+          }
+        })
+        .on('mouseover', function (event: MouseEvent, word: LayoutWord) {
+          if (enableTooltip && (!tooltipInstance || tooltipInstance.state.isDestroyed)) {
+            tooltipInstance = tippy(event.target as Element, {
+              animation: 'scale',
+              arrow: true,
+              content: () => (getWordTooltip ? getWordTooltip(word) : word.text),
+              onHidden: (instance) => {
+                instance.destroy();
+                tooltipInstance = null;
+              },
+              ...tooltipOptions,
+            });
+          }
+
+          if (onWordMouseOver) {
+            onWordMouseOver(word, event);
+          }
+        })
+        .on('mouseout', function (event: MouseEvent, word: LayoutWord) {
+          if (tooltipInstance && !tooltipInstance.state.isVisible) {
+            tooltipInstance.destroy();
+            tooltipInstance = null;
+          }
+
+          if (onWordMouseOut) {
+            onWordMouseOut(word, event);
+          }
+        })
+        .attr('cursor', onWordClick ? 'pointer' : 'default')
+        .attr('fill', getFill)
+        .attr('font-family', fontFamily)
+        .attr('font-style', fontStyle)
+        .attr('font-weight', fontWeight)
+        .attr('text-anchor', 'middle')
+        .attr('transform', 'translate(0, 0) rotate(0)');
+
+      // Apply custom text attributes if provided
+      if (typeof textAttributes === 'object' && textAttributes !== null) {
+        Object.keys(textAttributes).forEach((key) => {
+          const value = textAttributes[key];
+          if (typeof value === 'string') {
+            text = text.attr(key, value);
+          } else if (typeof value === 'function') {
+            // AttributeValue can be a callback
+            text = text.attr(key, value as (word: LayoutWord) => string);
+          }
+        });
+      }
+
+      // Transition to final state
+      text.call((enter) =>
+        enter
+          .transition()
+          .duration(transitionDuration)
+          .attr('font-size', getFontSize)
+          .attr('transform', getTransform)
+          .text(getText)
+      );
+
+      return text;
+    },
+    // Update: update existing text elements
+    (update) => {
+      update
+        .transition()
+        .duration(transitionDuration)
+        .attr('fill', getFill)
+        .attr('font-family', fontFamily)
+        .attr('font-size', getFontSize)
+        .attr('transform', getTransform)
+        .text(getText);
+
+      return update;
+    },
+    // Exit: remove text elements with fade out
+    (exit) => {
+      exit.transition().duration(transitionDuration).attr('fill-opacity', 0).remove();
+
+      return exit;
+    }
+  );
 }
