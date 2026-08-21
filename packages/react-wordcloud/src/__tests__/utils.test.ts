@@ -2,7 +2,8 @@
  * Utility functions tests
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
+import type { Word } from '../types.js';
 import {
   choose,
   getDefaultColors,
@@ -12,7 +13,6 @@ import {
   getTransform,
   rotate,
 } from '../utils.js';
-import type { Word } from '../types.js';
 
 describe('utils', () => {
   describe('choose', () => {

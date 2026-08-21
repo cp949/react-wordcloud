@@ -19,6 +19,7 @@ export function CodeSnippet({ code, language = 'typescript' }: CodeSnippetProps)
   return (
     <div className="relative">
       <button
+        type="button"
         onClick={handleCopy}
         className="absolute top-2 right-2 px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded transition-colors"
       >

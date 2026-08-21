@@ -2,8 +2,8 @@ import 'd3-transition';
 import { descending } from 'd3-array';
 import d3Cloud from 'd3-cloud';
 import seedrandom from 'seedrandom';
-import tippy, { Instance as TippyInstance } from 'tippy.js';
-import type { Word, MinMaxPair, Options, CallbacksProp, Selection } from './types.js';
+import tippy, { type Instance as TippyInstance } from 'tippy.js';
+import type { CallbacksProp, MinMaxPair, Options, Selection, Word } from './types.js';
 import type { LayoutWord } from './utils.js';
 import { choose, getFontScale, getFontSize, getText, getTransform, rotate } from './utils.js';
 
@@ -169,12 +169,12 @@ export function render(params: RenderParams): void {
     (enter) => {
       let text = enter
         .append('text')
-        .on('click', function (event: MouseEvent, word: LayoutWord) {
+        .on('click', (event: MouseEvent, word: LayoutWord) => {
           if (onWordClick) {
             onWordClick(word, event);
           }
         })
-        .on('mouseover', function (event: MouseEvent, word: LayoutWord) {
+        .on('mouseover', (event: MouseEvent, word: LayoutWord) => {
           if (enableTooltip && (!tooltipInstance || tooltipInstance.state.isDestroyed)) {
             tooltipInstance = tippy(event.target as Element, {
               animation: 'scale',
@@ -192,7 +192,7 @@ export function render(params: RenderParams): void {
             onWordMouseOver(word, event);
           }
         })
-        .on('mouseout', function (event: MouseEvent, word: LayoutWord) {
+        .on('mouseout', (event: MouseEvent, word: LayoutWord) => {
           if (tooltipInstance && !tooltipInstance.state.isVisible) {
             tooltipInstance.destroy();
             tooltipInstance = null;

@@ -1,8 +1,7 @@
 import { select } from 'd3-selection';
 import { useEffect, useRef, useState } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import type { MinMaxPair, Selection } from './types.js';
-import type { AttributeValue } from './types.js';
+import type { AttributeValue, MinMaxPair, Selection } from './types.js';
 
 /**
  * Custom hook for creating a responsive SVG with D3 selection
@@ -23,6 +22,10 @@ export function useResponsiveSvgSelection(
   const [size, setSize] = useState<MinMaxPair>(initialSize ?? [0, 0]);
   const [selection, setSelection] = useState<Selection | null>(null);
 
+  // 마운트 시 1회만 SVG를 생성하고 이후 크기 변화는 ResizeObserver로 처리한다.
+  // minSize/initialSize/svgAttributes를 의존성에 추가하면 매 렌더마다 SVG가 재생성되어
+  // 무한 루프가 발생한다.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: 마운트 시 1회만 실행해야 한다
   useEffect(() => {
     const element = elementRef.current;
     if (!element) {
@@ -102,7 +105,6 @@ export function useResponsiveSvgSelection(
       resizeObserver.unobserve(element);
       select(element).selectAll('*').remove();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [elementRef, selection, size];

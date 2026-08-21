@@ -3,25 +3,32 @@
  * React + D3 wordcloud component with security fixes and modern tooling
  */
 
+// Export defaults
+export { defaultCallbacks, defaultOptions } from './defaults.js';
+// Export React hooks
+export { useResponsiveSvgSelection } from './hooks.js';
+// Export main component
+export { default, ReactWordcloud } from './ReactWordcloud.js';
 // Export all types
 export type {
-  Word,
+  AttributeValue,
   Callbacks,
   CallbacksProp,
+  Enter,
+  MinMaxPair,
+  Optional,
   Options,
   OptionsProp,
   Props,
-  MinMaxPair,
   Scale,
-  Spiral,
-  Optional,
-  AttributeValue,
-  WordToStringCallback,
-  WordEventCallback,
   Selection,
-  Enter,
+  Spiral,
+  Word,
+  WordEventCallback,
+  WordToStringCallback,
 } from './types.js';
-
+// Export utility types
+export type { LayoutWord } from './utils.js';
 // Export utility functions
 export {
   choose,
@@ -32,16 +39,3 @@ export {
   getTransform,
   rotate,
 } from './utils.js';
-
-// Export utility types
-export type { LayoutWord } from './utils.js';
-
-// Export React hooks
-export { useResponsiveSvgSelection } from './hooks.js';
-
-// Export main component
-export { ReactWordcloud } from './ReactWordcloud.js';
-export { default } from './ReactWordcloud.js';
-
-// Export defaults
-export { defaultCallbacks, defaultOptions } from './defaults.js';

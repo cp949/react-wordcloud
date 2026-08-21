@@ -1,7 +1,7 @@
 import { max, min, range } from 'd3-array';
-import { scaleLinear, scaleLog, scaleOrdinal, scaleSqrt, ScaleLinear } from 'd3-scale';
+import { type ScaleLinear, scaleLinear, scaleLog, scaleOrdinal, scaleSqrt } from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
-import type { Word, MinMaxPair, Scale } from './types.js';
+import type { MinMaxPair, Scale, Word } from './types.js';
 
 /**
  * Extended Word interface with layout properties
@@ -63,6 +63,7 @@ export function getFontScale(
     case 'sqrt':
       fontScale = scaleSqrt().domain([minSize, maxSize]).range(fontSizes);
       break;
+    // biome-ignore lint/complexity/noUselessSwitchCase: Scale 유니온의 모든 값을 명시해 두기 위해 유지한다
     case 'linear':
     default:
       fontScale = scaleLinear().domain([minSize, maxSize]).range(fontSizes);

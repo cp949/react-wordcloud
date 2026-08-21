@@ -1,5 +1,5 @@
-import { EnterElement, Selection as d3Selection } from 'd3-selection';
-import { Props as TippyProps } from 'tippy.js';
+import type { Selection as d3Selection, EnterElement } from 'd3-selection';
+import type { Props as TippyProps } from 'tippy.js';
 
 /**
  * Utility Types

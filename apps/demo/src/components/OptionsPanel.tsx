@@ -1,6 +1,6 @@
 'use client';
 
-import { Options } from '@cp949/react-wordcloud';
+import type { Options } from '@cp949/react-wordcloud';
 import { useState } from 'react';
 
 interface OptionsPanelProps {
@@ -18,6 +18,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
   return (
     <div className="border rounded-lg bg-white shadow-sm">
       <button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full px-4 py-3 flex items-center justify-between text-left font-semibold hover:bg-gray-50"
       >
@@ -29,8 +30,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
         <div className="p-4 space-y-4 border-t">
           {/* Font Family */}
           <div>
-            <label className="block text-sm font-medium mb-1">Font Family</label>
+            <label htmlFor="font-family" className="block text-sm font-medium mb-1">
+              Font Family
+            </label>
             <select
+              id="font-family"
               value={options.fontFamily}
               onChange={(e) => handleChange('fontFamily', e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
@@ -45,8 +49,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Font Style */}
           <div>
-            <label className="block text-sm font-medium mb-1">Font Style</label>
+            <label htmlFor="font-style" className="block text-sm font-medium mb-1">
+              Font Style
+            </label>
             <select
+              id="font-style"
               value={options.fontStyle}
               onChange={(e) => handleChange('fontStyle', e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
@@ -58,8 +65,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Font Weight */}
           <div>
-            <label className="block text-sm font-medium mb-1">Font Weight</label>
+            <label htmlFor="font-weight" className="block text-sm font-medium mb-1">
+              Font Weight
+            </label>
             <select
+              id="font-weight"
               value={options.fontWeight}
               onChange={(e) => handleChange('fontWeight', e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
@@ -71,14 +81,15 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Font Sizes */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <span className="block text-sm font-medium mb-1">
               Font Size Range: {options.fontSizes?.[0]} - {options.fontSizes?.[1]}
-            </label>
+            </span>
             <div className="flex gap-2">
               <input
                 type="number"
                 min="1"
                 max="100"
+                aria-label="Minimum font size"
                 value={options.fontSizes?.[0]}
                 onChange={(e) =>
                   handleChange('fontSizes', [Number(e.target.value), options.fontSizes?.[1] ?? 32])
@@ -90,6 +101,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
                 type="number"
                 min="1"
                 max="200"
+                aria-label="Maximum font size"
                 value={options.fontSizes?.[1]}
                 onChange={(e) =>
                   handleChange('fontSizes', [options.fontSizes?.[0] ?? 4, Number(e.target.value)])
@@ -102,8 +114,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Padding */}
           <div>
-            <label className="block text-sm font-medium mb-1">Padding: {options.padding}</label>
+            <label htmlFor="padding" className="block text-sm font-medium mb-1">
+              Padding: {options.padding}
+            </label>
             <input
+              id="padding"
               type="range"
               min="0"
               max="10"
@@ -116,14 +131,15 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Rotation Angles */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <span className="block text-sm font-medium mb-1">
               Rotation Range: {options.rotationAngles?.[0]}° - {options.rotationAngles?.[1]}°
-            </label>
+            </span>
             <div className="flex gap-2">
               <input
                 type="number"
                 min="-90"
                 max="90"
+                aria-label="Minimum rotation angle"
                 value={options.rotationAngles?.[0]}
                 onChange={(e) =>
                   handleChange('rotationAngles', [
@@ -138,6 +154,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
                 type="number"
                 min="-90"
                 max="90"
+                aria-label="Maximum rotation angle"
                 value={options.rotationAngles?.[1]}
                 onChange={(e) =>
                   handleChange('rotationAngles', [
@@ -153,8 +170,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Scale */}
           <div>
-            <label className="block text-sm font-medium mb-1">Scale</label>
+            <label htmlFor="scale" className="block text-sm font-medium mb-1">
+              Scale
+            </label>
             <select
+              id="scale"
               value={options.scale}
               onChange={(e) => handleChange('scale', e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
@@ -167,8 +187,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Spiral */}
           <div>
-            <label className="block text-sm font-medium mb-1">Spiral</label>
+            <label htmlFor="spiral" className="block text-sm font-medium mb-1">
+              Spiral
+            </label>
             <select
+              id="spiral"
               value={options.spiral}
               onChange={(e) => handleChange('spiral', e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
@@ -180,10 +203,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
           {/* Transition Duration */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label htmlFor="transition-duration" className="block text-sm font-medium mb-1">
               Transition Duration: {options.transitionDuration}ms
             </label>
             <input
+              id="transition-duration"
               type="range"
               min="0"
               max="2000"

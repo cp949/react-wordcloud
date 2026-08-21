@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
 import debounce from 'lodash.debounce';
-import type { Props, Callbacks, Options } from './types.js';
-import { useResponsiveSvgSelection } from './hooks.js';
-import { layout, type LayoutParams } from './layout.js';
+import type React from 'react';
+import { useEffect, useMemo } from 'react';
 import { defaultCallbacks, defaultOptions } from './defaults.js';
+import { useResponsiveSvgSelection } from './hooks.js';
+import { type LayoutParams, layout } from './layout.js';
+import type { Callbacks, Options, Props } from './types.js';
 
 /**
  * ReactWordcloud component

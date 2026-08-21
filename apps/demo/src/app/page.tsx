@@ -1,10 +1,10 @@
 'use client';
 
-import { ReactWordcloud, Options } from '@cp949/react-wordcloud';
-import { sampleWords } from '@/lib/sampleWords';
-import { OptionsPanel } from '@/components/OptionsPanel';
-import { CodeSnippet } from '@/components/CodeSnippet';
+import { type Options, ReactWordcloud } from '@cp949/react-wordcloud';
 import { useState } from 'react';
+import { CodeSnippet } from '@/components/CodeSnippet';
+import { OptionsPanel } from '@/components/OptionsPanel';
+import { sampleWords } from '@/lib/sampleWords';
 
 export default function Home() {
   const [options, setOptions] = useState<Partial<Options>>({

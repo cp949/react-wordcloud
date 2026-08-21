@@ -2,10 +2,9 @@ packages:
   - 'apps/*'
   - 'packages/*'
 
-# 네이티브 빌드 스크립트 실행 허용 (esbuild: tsup 번들러, unrs-resolver: eslint import resolver)
+# 네이티브 빌드 스크립트 실행 허용 (esbuild: tsup 번들러)
 onlyBuiltDependencies:
   - esbuild
-  - unrs-resolver
 
 # 취약점 대응: 상위 패키지가 고정한 범위를 넘어 패치 버전 강제
 # - esbuild: tsup이 ^0.27.0으로 고정, GHSA-g7r4-m6w7-qqqr(Windows dev server 경로 탐색) 해결 버전은 0.28.1+

@@ -4,7 +4,7 @@
  */
 
 import { render } from '@testing-library/react';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { useResponsiveSvgSelection } from '../hooks.js';
 import type { MinMaxPair } from '../types.js';
 
