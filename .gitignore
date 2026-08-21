@@ -18,6 +18,9 @@ _tmp
 .turbo
 .next
 
+# typescript incremental build
+*.tsbuildinfo
+
 # test coverage
 coverage
 

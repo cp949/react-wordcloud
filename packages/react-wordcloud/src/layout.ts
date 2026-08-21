@@ -217,8 +217,8 @@ export function render(params: RenderParams): void {
           if (typeof value === 'string') {
             text = text.attr(key, value);
           } else if (typeof value === 'function') {
-            // AttributeValue can be a callback
-            text = text.attr(key, value as (word: LayoutWord) => string);
+            // AttributeValue는 콜백일 수 있으며, typeof 검사로 이미 좁혀져 별도 단언이 필요 없다
+            text = text.attr(key, value);
           }
         });
       }

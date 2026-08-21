@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import debounce from 'lodash.debounce';
 import type { Props, Callbacks, Options } from './types.js';
 import { useResponsiveSvgSelection } from './hooks.js';
@@ -36,24 +36,27 @@ export function ReactWordcloud({
   );
 
   // Memoize svgAttributes separately to prevent unnecessary re-renders
-  const svgAttributes = useMemo(
-    () => mergedOptions.svgAttributes,
-    [mergedOptions.svgAttributes]
-  );
+  const svgAttributes = useMemo(() => mergedOptions.svgAttributes, [mergedOptions.svgAttributes]);
 
   // Get responsive SVG selection and size
-  const [ref, selection, calculatedSize] = useResponsiveSvgSelection(
-    minSize,
-    size,
-    svgAttributes
+  const [ref, selection, calculatedSize] = useResponsiveSvgSelection(minSize, size, svgAttributes);
+
+  // 렌더링 중 ref.current 접근을 피하기 위해 useMemo로 debounce 함수를 1회만 생성한다
+  // (react-hooks/refs 규칙: 렌더 단계에서 ref 값을 읽을 수 없음)
+  const debouncedLayout = useMemo(
+    () =>
+      debounce((params: LayoutParams) => {
+        layout(params);
+      }, 100),
+    []
   );
 
-  // Debounced layout function to prevent excessive re-renders
-  const debouncedLayout = useRef(
-    debounce((params: LayoutParams) => {
-      layout(params);
-    }, 100)
-  ).current;
+  // 언마운트 시 대기 중인 debounce 호출 취소
+  useEffect(() => {
+    return () => {
+      debouncedLayout.cancel();
+    };
+  }, [debouncedLayout]);
 
   // Trigger layout when dependencies change
   useEffect(() => {

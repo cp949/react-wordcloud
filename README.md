@@ -67,6 +67,7 @@ cp949-wordcloud/
 React wordcloud component library published to NPM
 
 Key Features:
+
 - 🔒 Zero security vulnerabilities
 - ⚡ React 18 & 19 support
 - 💯 TypeScript 5.9 strict mode
@@ -77,7 +78,7 @@ Key Features:
 
 ### Demo Application
 
-Interactive demo application built with Next.js 15
+Interactive demo application built with Next.js 16
 
 [View Demo →](./apps/demo)
 
@@ -136,7 +137,7 @@ pnpm --filter @cp949/react-wordcloud test:coverage
 - **React**: UI library
 - **D3.js v7+**: Data visualization
 - **Vitest**: Unit testing framework
-- **Next.js 15**: Demo application framework
+- **Next.js 16**: Demo application framework
 - **tsup**: Library bundler
 - **Tailwind CSS v4**: Styling framework (demo)
 

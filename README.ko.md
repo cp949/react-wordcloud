@@ -67,6 +67,7 @@ cp949-wordcloud/
 NPM에 배포되는 React 워드클라우드 컴포넌트 라이브러리
 
 주요 특징:
+
 - 🔒 보안 취약점 제로
 - ⚡ React 18 & 19 지원
 - 💯 TypeScript 5.9 strict mode
@@ -77,7 +78,7 @@ NPM에 배포되는 React 워드클라우드 컴포넌트 라이브러리
 
 ### 데모 애플리케이션
 
-Next.js 15 기반 인터랙티브 데모 애플리케이션
+Next.js 16 기반 인터랙티브 데모 애플리케이션
 
 [데모 →](./apps/demo)
 
@@ -136,7 +137,7 @@ pnpm --filter @cp949/react-wordcloud test:coverage
 - **React**: UI 라이브러리
 - **D3.js v7+**: 데이터 시각화
 - **Vitest**: 유닛 테스트 프레임워크
-- **Next.js 15**: 데모 애플리케이션 프레임워크
+- **Next.js 16**: 데모 애플리케이션 프레임워크
 - **tsup**: 라이브러리 번들러
 - **Tailwind CSS v4**: 스타일링 프레임워크 (데모)
 

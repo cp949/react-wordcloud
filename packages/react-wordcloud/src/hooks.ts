@@ -12,12 +12,13 @@ import type { AttributeValue } from './types.js';
  * @param initialSize - Optional fixed [width, height]. If undefined, SVG is responsive
  * @param svgAttributes - Optional SVG attributes to apply
  * @returns Tuple of [elementRef, d3Selection, currentSize]
+ *          elementRef.current는 마운트 전 null이므로 React 19 타입 규칙에 맞춰 null을 포함한다
  */
 export function useResponsiveSvgSelection(
   minSize: MinMaxPair,
   initialSize: MinMaxPair | undefined,
   svgAttributes: Record<string, AttributeValue> | undefined
-): [React.RefObject<HTMLDivElement>, Selection | null, MinMaxPair] {
+): [React.RefObject<HTMLDivElement | null>, Selection | null, MinMaxPair] {
   const elementRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<MinMaxPair>(initialSize ?? [0, 0]);
   const [selection, setSelection] = useState<Selection | null>(null);
