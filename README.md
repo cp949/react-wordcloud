@@ -70,7 +70,7 @@ Key Features:
 
 - 🔒 Zero security vulnerabilities
 - ⚡ React 18 & 19 support
-- 💯 TypeScript 5.9 strict mode
+- 💯 TypeScript 6.0 strict mode
 - 🎨 Fully customizable
 - 📱 Responsive and accessible
 

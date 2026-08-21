@@ -70,7 +70,7 @@ NPM에 배포되는 React 워드클라우드 컴포넌트 라이브러리
 
 - 🔒 보안 취약점 제로
 - ⚡ React 18 & 19 지원
-- 💯 TypeScript 5.9 strict mode
+- 💯 TypeScript 6.0 strict mode
 - 🎨 완전한 커스터마이징 지원
 - 📱 반응형 및 접근성 지원
 

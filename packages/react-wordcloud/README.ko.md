@@ -11,7 +11,7 @@ TypeScript, D3.js v7+로 구축된 모던하고 안전한 React 워드클라우�
 ## 주요 특징
 
 - 🔒 **보안**: d3-color ReDoS 취약점 수정, 제로 보안 취약점
-- ⚡ **모던**: TypeScript 5.9, React 18/19, D3.js v7+로 구축
+- ⚡ **모던**: TypeScript 6.0, React 18/19, D3.js v7+로 구축
 - 🎨 **커스터마이징**: 폰트, 색상, 회전, 스케일 등 완전한 제어
 - 📱 **반응형**: ResizeObserver를 통한 컨테이너 크기 자동 조정
 - 💯 **타입 안전**: 포괄적인 타입 정의를 갖춘 TypeScript 작성
@@ -272,7 +272,7 @@ MIT © Chris Zhou
 
 - 보안 수정 (d3-color ReDoS 취약점)
 - React 18/19 호환성
-- TypeScript 5.9
+- TypeScript 6.0
 - 모던 도구 (Vitest, tsup)
 - 의존성 취약점 제로
 

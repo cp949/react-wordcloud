@@ -11,7 +11,7 @@ Modern, secure React wordcloud component built with TypeScript and D3.js v7+
 ## Features
 
 - 🔒 **Secure**: Zero security vulnerabilities, fixed d3-color ReDoS issue
-- ⚡ **Modern**: Built with TypeScript 5.9, React 18/19, and D3.js v7+
+- ⚡ **Modern**: Built with TypeScript 6.0, React 18/19, and D3.js v7+
 - 🎨 **Customizable**: Full control over fonts, colors, rotation, scale, and more
 - 📱 **Responsive**: Automatically adjusts to container size with ResizeObserver
 - 💯 **Type-Safe**: Written in TypeScript with comprehensive type definitions
@@ -272,7 +272,7 @@ This is a modernized fork of [react-wordcloud](https://github.com/chrisrzhou/rea
 
 - Security fixes (d3-color ReDoS vulnerability)
 - React 18/19 compatibility
-- TypeScript 5.9
+- TypeScript 6.0
 - Modern tooling (Vitest, tsup)
 - Zero dependencies vulnerabilities
 
