@@ -9,7 +9,7 @@ __tests__/
 
 # Config files
 tsconfig.json
-tsup.config.ts
+tsdown.config.ts
 vitest.config.ts
 .eslintrc*
 .prettierrc*

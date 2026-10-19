@@ -1,10 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    // tsup(8.5.1)의 dts 빌드가 내부적으로 baseUrl을 주입하는데,
-    // TypeScript 6.0에서 baseUrl이 deprecated 되어 TS5101 오류가 발생한다.
-    // tsup이 baseUrl 주입을 제거할 때까지 경고를 억제한다.
-    "ignoreDeprecations": "6.0",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,

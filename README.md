@@ -138,7 +138,7 @@ pnpm --filter @cp949/react-wordcloud test:coverage
 - **D3.js v7+**: Data visualization
 - **Vitest**: Unit testing framework
 - **Next.js 16**: Demo application framework
-- **tsup**: Library bundler
+- **tsdown**: Library bundler
 - **Tailwind CSS v4**: Styling framework (demo)
 
 ---

@@ -138,7 +138,7 @@ pnpm --filter @cp949/react-wordcloud test:coverage
 - **D3.js v7+**: 데이터 시각화
 - **Vitest**: 유닛 테스트 프레임워크
 - **Next.js 16**: 데모 애플리케이션 프레임워크
-- **tsup**: 라이브러리 번들러
+- **tsdown**: 라이브러리 번들러
 - **Tailwind CSS v4**: 스타일링 프레임워크 (데모)
 
 ---

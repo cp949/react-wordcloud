@@ -273,7 +273,7 @@ MIT © Chris Zhou
 - 보안 수정 (d3-color ReDoS 취약점)
 - React 18/19 호환성
 - TypeScript 6.0
-- 모던 도구 (Vitest, tsup)
+- 모던 도구 (Vitest, tsdown)
 - 의존성 취약점 제로
 
 원본 라이브러리: https://github.com/chrisrzhou/react-wordcloud

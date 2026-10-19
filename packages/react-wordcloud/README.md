@@ -273,7 +273,7 @@ This is a modernized fork of [react-wordcloud](https://github.com/chrisrzhou/rea
 - Security fixes (d3-color ReDoS vulnerability)
 - React 18/19 compatibility
 - TypeScript 6.0
-- Modern tooling (Vitest, tsup)
+- Modern tooling (Vitest, tsdown)
 - Zero dependencies vulnerabilities
 
 Original library: https://github.com/chrisrzhou/react-wordcloud
