@@ -88,7 +88,7 @@ Interactive demo application built with Vite 8
 
 ### System Requirements
 
-- Node.js >= 20.0.0
+- Node.js >= 24.18.0
 - pnpm >= 9.0.0
 
 ### Installation & Build
