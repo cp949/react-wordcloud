@@ -21,7 +21,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsdown",
-    "dev": "tsdown --watch",
+    "dev": "tsdown --watch --no-clean",
     "lint": "oxlint src",
     "lint:fix": "oxlint --fix src",
     "typecheck": "tsc --noEmit",
