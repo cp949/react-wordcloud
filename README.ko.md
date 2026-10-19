@@ -58,7 +58,7 @@ cp949-wordcloud/
 ├── packages/
 │   └── react-wordcloud/    # 메인 라이브러리 (NPM 배포)
 ├── apps/
-│   └── demo/               # Next.js 데모 애플리케이션
+│   └── demo/               # Vite 데모 애플리케이션
 └── README.md              # ← 현재 문서
 ```
 
@@ -78,7 +78,7 @@ NPM에 배포되는 React 워드클라우드 컴포넌트 라이브러리
 
 ### 데모 애플리케이션
 
-Next.js 16 기반 인터랙티브 데모 애플리케이션
+Vite 8 기반 인터랙티브 데모 애플리케이션
 
 [데모 →](./apps/demo)
 
@@ -137,7 +137,7 @@ pnpm --filter @cp949/react-wordcloud test:coverage
 - **React**: UI 라이브러리
 - **D3.js v7+**: 데이터 시각화
 - **Vitest**: 유닛 테스트 프레임워크
-- **Next.js 16**: 데모 애플리케이션 프레임워크
+- **Vite 8**: 데모 애플리케이션 빌드 도구
 - **tsdown**: 라이브러리 번들러
 - **Tailwind CSS v4**: 스타일링 프레임워크 (데모)
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactWordcloud } from '@cp949/react-wordcloud';
 import { CodeSnippet } from '@/components/CodeSnippet';
 import { sampleWords } from '@/lib/sampleWords';

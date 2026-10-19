@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
   "files": {
-    "includes": ["**", "!**/.next", "!**/.turbo", "!**/dist", "!**/coverage", "!**/next-env.d.ts"]
+    "includes": ["**", "!**/.turbo", "!**/dist", "!**/coverage"]
   },
   "formatter": {
     "enabled": true,

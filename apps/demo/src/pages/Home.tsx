@@ -1,5 +1,3 @@
-'use client';
-
 import { type Options, ReactWordcloud } from '@cp949/react-wordcloud';
 import { useState } from 'react';
 import { CodeSnippet } from '@/components/CodeSnippet';

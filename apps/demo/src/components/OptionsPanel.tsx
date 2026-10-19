@@ -1,5 +1,3 @@
-'use client';
-
 import type { Options } from '@cp949/react-wordcloud';
 import { useState } from 'react';
 

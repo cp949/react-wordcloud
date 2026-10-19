@@ -16,7 +16,6 @@ dist
 package-lock.json
 _tmp
 .turbo
-.next
 
 # typescript incremental build
 *.tsbuildinfo

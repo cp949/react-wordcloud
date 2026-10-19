@@ -58,7 +58,7 @@ cp949-wordcloud/
 ├── packages/
 │   └── react-wordcloud/    # Main library (published to NPM)
 ├── apps/
-│   └── demo/               # Next.js demo application
+│   └── demo/               # Vite demo application
 └── README.md              # ← You are here
 ```
 
@@ -78,7 +78,7 @@ Key Features:
 
 ### Demo Application
 
-Interactive demo application built with Next.js 16
+Interactive demo application built with Vite 8
 
 [View Demo →](./apps/demo)
 
@@ -137,7 +137,7 @@ pnpm --filter @cp949/react-wordcloud test:coverage
 - **React**: UI library
 - **D3.js v7+**: Data visualization
 - **Vitest**: Unit testing framework
-- **Next.js 16**: Demo application framework
+- **Vite 8**: Demo application build tool
 - **tsdown**: Library bundler
 - **Tailwind CSS v4**: Styling framework (demo)
 
