@@ -49,7 +49,7 @@ export function getDefaultColors(): string[] {
 export function getFontScale(
   words: Word[],
   fontSizes: MinMaxPair,
-  scale: Scale
+  scale: Scale,
 ): ScaleLinear<number, number> {
   const minSize = min(words, (word) => Number(word.value)) ?? 0;
   const maxSize = max(words, (word) => Number(word.value)) ?? 0;
@@ -63,7 +63,6 @@ export function getFontScale(
     case 'sqrt':
       fontScale = scaleSqrt().domain([minSize, maxSize]).range(fontSizes);
       break;
-    // biome-ignore lint/complexity/noUselessSwitchCase: Scale 유니온의 모든 값을 명시해 두기 위해 유지한다
     case 'linear':
     default:
       fontScale = scaleLinear().domain([minSize, maxSize]).range(fontSizes);
@@ -112,7 +111,7 @@ export function getTransform(word: LayoutWord): string {
 export function rotate(
   rotations: number,
   rotationAngles: MinMaxPair,
-  random: RandomFunction
+  random: RandomFunction,
 ): number {
   if (rotations < 1) {
     return 0;

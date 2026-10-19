@@ -88,7 +88,10 @@ describe('useResponsiveSvgSelection', () => {
 
   it('should apply custom SVG attributes', () => {
     const { container } = render(
-      <TestComponent minSize={[300, 300]} svgAttributes={{ class: 'custom-svg', id: 'test-svg' }} />
+      <TestComponent
+        minSize={[300, 300]}
+        svgAttributes={{ class: 'custom-svg', id: 'test-svg' }}
+      />,
     );
 
     const svg = container.querySelector('svg');

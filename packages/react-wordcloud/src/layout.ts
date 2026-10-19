@@ -100,7 +100,7 @@ export function layout(params: LayoutParams): void {
               `Unable to layout ${missingWords} word(s) after ${attempts} attempts. ` +
                 `Consider: (1) Increasing container size, ` +
                 `(2) Lowering max font size, ` +
-                `(3) Limiting rotation angles.`
+                `(3) Limiting rotation angles.`,
             );
           }
 
@@ -230,7 +230,7 @@ export function render(params: RenderParams): void {
           .duration(transitionDuration)
           .attr('font-size', getFontSize)
           .attr('transform', getTransform)
-          .text(getText)
+          .text(getText),
       );
 
       return text;
@@ -253,6 +253,6 @@ export function render(params: RenderParams): void {
       exit.transition().duration(transitionDuration).attr('fill-opacity', 0).remove();
 
       return exit;
-    }
+    },
   );
 }

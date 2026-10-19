@@ -22,8 +22,8 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "lint": "biome check src",
-    "lint:fix": "biome check --write src",
+    "lint": "oxlint src",
+    "lint:fix": "oxlint --fix src",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",

@@ -16,7 +16,7 @@ import type { AttributeValue, MinMaxPair, Selection } from './types.js';
 export function useResponsiveSvgSelection(
   minSize: MinMaxPair,
   initialSize: MinMaxPair | undefined,
-  svgAttributes: Record<string, AttributeValue> | undefined
+  svgAttributes: Record<string, AttributeValue> | undefined,
 ): [React.RefObject<HTMLDivElement | null>, Selection | null, MinMaxPair] {
   const elementRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<MinMaxPair>(initialSize ?? [0, 0]);
@@ -25,7 +25,7 @@ export function useResponsiveSvgSelection(
   // 마운트 시 1회만 SVG를 생성하고 이후 크기 변화는 ResizeObserver로 처리한다.
   // minSize/initialSize/svgAttributes를 의존성에 추가하면 매 렌더마다 SVG가 재생성되어
   // 무한 루프가 발생한다.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: 마운트 시 1회만 실행해야 한다
+  /* oxlint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const element = elementRef.current;
     if (!element) {
@@ -106,6 +106,7 @@ export function useResponsiveSvgSelection(
       select(element).selectAll('*').remove();
     };
   }, []);
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
   return [elementRef, selection, size];
 }

@@ -12,17 +12,19 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write .",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "prettier --write .",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "eslint-plugin-turbo": "^2.11.9",
+    "oxlint": "1.88.0",
+    "prettier": "3.9.10",
     "turbo": "^2.11.9",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "packageManager": "pnpm@10.22.0",
   "engines": {

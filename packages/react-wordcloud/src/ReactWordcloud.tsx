@@ -25,7 +25,7 @@ export function ReactWordcloud({
       ...defaultCallbacks,
       ...callbacks,
     }),
-    [callbacks]
+    [callbacks],
   );
 
   const mergedOptions: Options = useMemo(
@@ -33,7 +33,7 @@ export function ReactWordcloud({
       ...defaultOptions,
       ...options,
     }),
-    [options]
+    [options],
   );
 
   // Memoize svgAttributes separately to prevent unnecessary re-renders
@@ -49,7 +49,7 @@ export function ReactWordcloud({
       debounce((params: LayoutParams) => {
         layout(params);
       }, 100),
-    []
+    [],
   );
 
   // 언마운트 시 대기 중인 debounce 호출 취소

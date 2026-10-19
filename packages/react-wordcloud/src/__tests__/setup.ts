@@ -8,7 +8,6 @@ import { vi } from 'vitest';
 
 // Mock ResizeObserver for jsdom environment
 // ResizeObserver is not available in jsdom, causing tests to fail
-// biome-ignore lint/suspicious/noExplicitAny: jsdom에 없는 전역 API를 주입하려면 globalThis 캐스팅이 필요하다
 (globalThis as any).ResizeObserver = class ResizeObserver {
   observe = vi.fn();
   unobserve = vi.fn();
