@@ -11,8 +11,8 @@ __tests__/
 tsconfig.json
 tsdown.config.ts
 vitest.config.ts
-.eslintrc*
-.prettierrc*
+.oxlintrc*
+.oxfmtrc*
 
 # Build tools
 .turbo/

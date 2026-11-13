@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["typescript", "react"],
-  "jsPlugins": ["eslint-plugin-turbo"],
   "categories": {
     "correctness": "off"
   },
@@ -9,6 +8,7 @@
     "builtin": true
   },
   "ignorePatterns": [
+    "**/.next/**",
     "**/.turbo/**",
     "**/build/**",
     "**/coverage/**",
@@ -97,7 +97,6 @@
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "error",
     "react/require-render-return": "error",
-    "turbo/no-undeclared-env-vars": "warn",
     "prefer-const": "warn",
     "react/rules-of-hooks": "error",
     "react/exhaustive-deps": "warn",
